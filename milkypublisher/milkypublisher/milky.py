@@ -15,6 +15,7 @@ class MilkyPublisher(Node):
         PORT = 4001
         self.s = socket(AF_INET,SOCK_DGRAM)
         self.s.bind((HOST,PORT))
+        self.main()
     
     def main(self):
         while True:
@@ -26,7 +27,7 @@ class MilkyPublisher(Node):
                 print(f'Received message is [{message}]')
 
                 # Clientが受信待ちになるまで待つため
-                time.sleep(1)
+                time.sleep(0.3)
 
                 # # ④Clientへ受信完了messageを送信
                 # print('Send response to Client')
