@@ -25,10 +25,11 @@ class MilkyPublisher(Node):
                 message, cli_addr = self.s.recvfrom(8192)
                 message = message.decode(encoding='utf-8')
                 print(f'Received message is [{message}]')
-
+                ipaddress = message.split("%")[0]
+                portaddress = message.split("%")[1]
+                
                 # Clientが受信待ちになるまで待つため
                 time.sleep(0.05)
-                
                 
                 
                 # TODO: ROS2はライブラリ上ネットワークの制約を書けているかもしれない。要検討
