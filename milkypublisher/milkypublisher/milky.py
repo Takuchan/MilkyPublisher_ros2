@@ -3,7 +3,7 @@ from rclpy.node import Node
 from socket import socket, AF_INET, SOCK_DGRAM
 
 from std_msgs.msg import String
-from milkypublisher.msg import Milky
+from milkypublisher_msgs.msg import MilkyPPose
 
 import time
 
