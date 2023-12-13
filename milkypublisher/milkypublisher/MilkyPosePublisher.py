@@ -13,6 +13,7 @@ class MilkyPublisher(Node):
 
     def __init__(self) -> None:
         super().__init__("Milkypublisher")
+        self.publisher_ = self.create_publisher(MilkyPPose, 'milkypublisher/pose', 10)
         self.logger = self.get_logger()
         HOST = '127.0.0.1'
         PORT = 4001
@@ -28,9 +29,12 @@ class MilkyPublisher(Node):
                 message, cli_addr = self.s.recvfrom(8192)
                 message = message.decode(encoding='utf-8')
                 print(f'Received message is [{message}]')
-                ipaddress = message.split("%")[0]
-                portaddress = message.split("%")[1]
-                
+                # ipaddress = message.split("%")[0]
+                # portaddress = message.split("%")[1]
+                msg = MilkyPPose()
+                msg.left_ankle = 12.2
+                self.publisher_.publish(msg)
+                self.logger.info(f'Publishing: {msg}')
                 # Clientが受信待ちになるまで待つため
                 time.sleep(0.05)
                 
