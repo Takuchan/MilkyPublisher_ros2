@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'milky = milkypublisher.milky:main'
+            'milkyPose = milkypublisher.MilkyPosePublisher:main',
+            'milkyPoseSub = milkypublisher.MilkyPoseSub:main'
+
         ],
     },
 )
