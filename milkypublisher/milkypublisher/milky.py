@@ -27,11 +27,9 @@ class MilkyPublisher(Node):
                 print(f'Received message is [{message}]')
 
                 # Clientが受信待ちになるまで待つため
-                time.sleep(0.3)
-
-                # # ④Clientへ受信完了messageを送信
-                # print('Send response to Client')
-                # self.s.sendto('Success to receive message'.encode(encoding='utf-8'), cli_addr)
+                time.sleep(0.05)
+                
+                
                 
                 # TODO: ROS2はライブラリ上ネットワークの制約を書けているかもしれない。要検討
 
