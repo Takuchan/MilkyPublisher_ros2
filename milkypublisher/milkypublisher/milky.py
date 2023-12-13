@@ -15,6 +15,7 @@ class MilkyPublisher(Node):
         PORT = 4001
         self.s = socket(AF_INET,SOCK_DGRAM)
         self.s.bind((HOST,PORT))
+        self.main()
     
     def main(self):
         while True:
@@ -24,13 +25,12 @@ class MilkyPublisher(Node):
                 message, cli_addr = self.s.recvfrom(8192)
                 message = message.decode(encoding='utf-8')
                 print(f'Received message is [{message}]')
-
+                ipaddress = message.split("%")[0]
+                portaddress = message.split("%")[1]
+                
                 # Clientが受信待ちになるまで待つため
-                time.sleep(1)
-
-                # # ④Clientへ受信完了messageを送信
-                # print('Send response to Client')
-                # self.s.sendto('Success to receive message'.encode(encoding='utf-8'), cli_addr)
+                time.sleep(0.05)
+                
                 
                 # TODO: ROS2はライブラリ上ネットワークの制約を書けているかもしれない。要検討
 
